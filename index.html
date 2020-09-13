@@ -7,34 +7,10 @@
 </head>
 <h1 style="font-family:impact;font-size:500%;color:pink;text-align:center;">Password Generator</h1>
 <label for="GeneratePassLength1" style="font-family:impact;font-size:130%;color:blue;">Password Length:</label>
-<select id="GeneratePassLength1">
-  <option value="1">1</option>
-  <option value="2">2</option>
-  <option value="3">3</option>
-  <option value="4">4</option>
-  <option value="5">5</option>
-  <option value="6">6</option>
-  <option value="7">7</option>
-  <option value="8">8</option>
-  <option value="9">9</option>
-  <option value="10">10</option>
-  <option value="11">11</option>
-  <option value="12">12</option>
-  <option value="13">13</option>
-  <option value="14">14</option>
-  <option value="15">15</option>
-  <option value="16">16</option>
-  <option value="17">17</option>
-  <option value="18">18</option>
-  <option value="19">19</option>
-  <option value="20">20</option>
-  <option value="100">100</option>
-  <option value="500">500</option>
-  <option value="1000">1000</option>
-  <option value="1500">1500</option>
-  <option value="2000">2000</option>
-  <option value="2500">2500</option>
-</select>
+<form>
+  <label for="Length"></label><br>
+  <input type="text" id="LengthPass" name="Length"><br>
+</form>
 <style>
 .button {
   border: none;
@@ -88,7 +64,7 @@ function getSelectedOption(sel) {
 function clickHandler(){ // declare a function that updates the state
   elementIsClicked = true;
   var GeneratePass = document.getElementById('GeneratePassLength1');
-  var PassLength = getSelectedOption(GeneratePass);
+  var PassLength = document.getElementById('LengthPass');
   var PassResultText = document.getElementById('PasswordResult1');
   var passSelected = generatePassword(PassLength.value)
   PassResultText.innerHTML = passSelected
