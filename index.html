@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Crown's Scripting Tutorials">
+<title>Password Generator</title>
+</head>
+<h1 style="font-family:impact;font-size:500%;color:pink;text-align:center;">Password Generator</h1>
+<label for="GeneratePassLength1" style="font-family:impact;font-size:130%;color:blue;">Password Length:</label>
+<select id="GeneratePassLength1">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+  <option value="8">8</option>
+  <option value="9">9</option>
+  <option value="10">10</option>
+  <option value="11">11</option>
+  <option value="12">12</option>
+  <option value="13">13</option>
+  <option value="14">14</option>
+  <option value="15">15</option>
+  <option value="16">16</option>
+</select>
+<style>
+.button {
+  border: none;
+  color: white;
+  font-family:fantasy;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: lime;
+  color: white;
+  border: 1px solid #26DD05;
+}
+
+.button1:hover {
+  background-color: #26DD05;
+  color: white;
+}
+
+</style>
+<h1 id="PasswordResult1" style="font-family:impact;font-size:200%;color:pink;">Password Result Goes Here</h1>
+<button id="Generate1" class="button button1">Generate</button>
+
+<script>
+function generatePassword(length) {
+    var randomChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var result = '';
+    for ( var i = 0; i < length; i++ ) {
+        result += randomChars.charAt(Math.floor(Math.random() * randomChars.length));
+    }
+    return result;
+}
+var elementIsClicked = false; // declare the variable that tracks the state
+function getSelectedOption(sel) {
+    var opt;
+    for ( var i = 0, len = sel.options.length; i < len; i++ ) {
+        opt = sel.options[i];
+        if ( opt.selected === true ) {
+            break;
+        }
+    }
+    return opt;
+}
+function clickHandler(){ // declare a function that updates the state
+  elementIsClicked = true;
+  var GeneratePass = document.getElementById('GeneratePassLength1');
+  var PassLength = getSelectedOption(GeneratePass);
+  var PassResultText = document.getElementById('PasswordResult1');
+  var passSelected = generatePassword(PassLength.value)
+  PassResultText.innerHTML = passSelected
+}
+var element = document.getElementById('Generate1'); // grab a reference to your element
+element.addEventListener('click', clickHandler); // associate the function above with the click event
+</script>
+</html>
